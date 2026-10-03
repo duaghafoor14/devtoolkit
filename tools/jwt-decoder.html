@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JWT Decoder | Dev Tool Kit</title>
+    <meta name="description"
+        content="Decode and inspect JSON Web Tokens directly in your browser. View JWT headers, payloads, claims and expiration details without uploading anything.">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Apply saved theme before page renders -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("dev-tool-kit-theme");
+
+            if (savedTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else if (savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+</head>
+
+<body class="converter-page jwt-page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+
+                <a href="../index.html" class="brand" aria-label="Dev Tool Kit Home">
+                    <span class="brand-mark" aria-hidden="true">DT</span>
+                    <span>Dev Tool Kit</span>
+                </a>
+
+                <nav class="main-nav desktop-nav" aria-label="Main navigation">
+
+                    <a href="../index.html">Home</a>
+
+                    <div class="nav-dropdown">
+                        <button type="button" class="nav-button nav-dropdown-toggle" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+                            <a href="./json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+
+                            <a href="./jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+
+                            <a href="./regex-tester.html">
+                                Regex Tester
+                            </a>
+
+                            <a href="./zip-opener.html">
+                                ZIP Opener
+                            </a>
+
+                            <a href="./pdf-merge-split.html">
+                                PDF Merge &amp; Split
+                            </a>
+
+                            <a href="./image-to-pdf.html">
+                                Image to PDF
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="../about.html">About</a>
+
+                    <a href="../contact.html">Contact</a>
+
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="icon-button theme-toggle" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle mobile-menu-button" data-menu-toggle aria-label="Open navigation menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="../index.html">Home</a>
+
+                <a href="./json-yaml-csv-converter.html">
+                    JSON / YAML / CSV Converter
+                </a>
+
+                <a href="./jwt-decoder.html">
+                    JWT Decoder
+                </a>
+
+                <a href="./regex-tester.html">
+                    Regex Tester
+                </a>
+
+                <a href="./zip-opener.html">
+                    ZIP Opener
+                </a>
+
+                <a href="./pdf-merge-split.html">
+                    PDF Merge &amp; Split
+                </a>
+
+                <a href="./image-to-pdf.html">
+                    Image to PDF
+                </a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <a href="../about.html">About</a>
+
+                <a href="../contact.html">Contact</a>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+    <main class="page-main tool-page">
+
+        <!-- Back button -->
+        <div class="tool-topbar">
+            <a href="../index.html" class="back-to-home">
+                ← Back
+            </a>
+        </div>
+
+
+        <!-- Page Header -->
+        <section class="tool-page-header">
+
+            <div class="container">
+                <div class="eyebrow">
+                    Developer Tool
+                </div>
+
+                <h1>JWT Decoder</h1>
+
+                <p>
+                    Decode and inspect JSON Web Tokens directly in your browser.
+                    View the header, payload, claims and expiration details
+                    without uploading your token anywhere.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             JWT WORKSPACE
+        ========================== -->
+        <section class="container jwt-workspace">
+
+            <!-- Security Notice -->
+            <div class="jwt-security-notice">
+
+                <div class="jwt-security-icon">
+                    🔒
+                </div>
+
+                <div>
+                    <strong>Your token stays in your browser.</strong>
+
+                    <p>
+                        This tool only decodes the JWT locally.
+                        No token is uploaded, stored or sent to a server.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Input Card -->
+            <div class="jwt-card">
+
+                <div class="jwt-card-header">
+
+                    <div>
+                        <h2>JWT Token</h2>
+
+                        <p>
+                            Paste your JSON Web Token below.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="jwt-input-area">
+
+                    <label for="jwt-input">
+                        JWT Token
+                    </label>
+
+                    <textarea id="jwt-input" class="jwt-textarea" rows="8" spellcheck="false" autocomplete="off"
+                        placeholder="Paste your JWT here..."></textarea>
+
+                </div>
+
+
+                <!-- Actions -->
+                <div class="jwt-actions">
+
+                    <button type="button" id="load-example" class="button button-secondary">
+                        Load Example
+                    </button>
+
+                    <button type="button" id="decode-jwt" class="button button-primary">
+                        Decode JWT
+                    </button>
+
+                    <button type="button" id="clear-jwt" class="button button-secondary">
+                        Clear
+                    </button>
+
+                </div>
+
+                <p class="jwt-shortcut">
+                    Tip: Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
+                    to decode.
+                </p>
+
+            </div>
+
+
+            <!-- Error -->
+            <div id="jwt-error" class="jwt-error" role="alert" hidden>
+            </div>
+
+
+            <!-- =========================
+                 RESULTS
+            ========================== -->
+            <div id="jwt-results" class="jwt-results" hidden>
+
+
+                <!-- Token Summary -->
+                <div class="jwt-card">
+
+                    <div class="jwt-card-header">
+
+                        <div>
+                            <h2>Token Summary</h2>
+
+                            <p>
+                                Basic information detected from the JWT.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="jwt-summary-grid">
+
+                        <div class="jwt-summary-item">
+                            <span class="jwt-summary-label">
+                                Algorithm
+                            </span>
+
+                            <strong id="jwt-algorithm">
+                                —
+                            </strong>
+                        </div>
+
+
+                        <div class="jwt-summary-item">
+                            <span class="jwt-summary-label">
+                                Token Type
+                            </span>
+
+                            <strong id="jwt-type">
+                                —
+                            </strong>
+                        </div>
+
+
+                        <div class="jwt-summary-item">
+                            <span class="jwt-summary-label">
+                                Claims
+                            </span>
+
+                            <strong id="jwt-claim-count">
+                                —
+                            </strong>
+                        </div>
+
+
+                        <div class="jwt-summary-item">
+                            <span class="jwt-summary-label">
+                                Expiration
+                            </span>
+
+                            <strong id="jwt-expiration">
+                                —
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Header -->
+                <div class="jwt-card">
+
+                    <div class="jwt-result-header">
+
+                        <div>
+                            <h2>Header</h2>
+
+                            <p>
+                                The JWT header contains metadata about
+                                the token.
+                            </p>
+                        </div>
+
+                        <button type="button" class="button button-secondary jwt-copy-button"
+                            data-copy-target="jwt-header-output">
+                            Copy
+                        </button>
+
+                    </div>
+
+
+                    <pre id="jwt-header-output" class="jwt-code-output"></pre>
+
+                </div>
+
+
+                <!-- Payload -->
+                <div class="jwt-card">
+
+                    <div class="jwt-result-header">
+
+                        <div>
+                            <h2>Payload</h2>
+
+                            <p>
+                                The payload contains the token's claims
+                                and other data.
+                            </p>
+                        </div>
+
+                        <button type="button" class="button button-secondary jwt-copy-button"
+                            data-copy-target="jwt-payload-output">
+                            Copy
+                        </button>
+
+                    </div>
+
+
+                    <pre id="jwt-payload-output" class="jwt-code-output"></pre>
+
+                </div>
+
+
+                <!-- Claims -->
+                <div class="jwt-card">
+
+                    <div class="jwt-result-header">
+
+                        <div>
+                            <h2>Claims</h2>
+
+                            <p>
+                                Common registered JWT claims found
+                                in the payload.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div id="jwt-claims" class="jwt-claims">
+                    </div>
+
+                </div>
+
+
+                <!-- Signature -->
+                <div class="jwt-card">
+
+                    <div class="jwt-result-header">
+
+                        <div>
+                            <h2>Signature</h2>
+
+                            <p>
+                                The third section of the JWT contains
+                                the encoded signature.
+                            </p>
+                        </div>
+
+                        <button type="button" class="button button-secondary jwt-copy-button"
+                            data-copy-target="jwt-signature-output">
+                            Copy
+                        </button>
+
+                    </div>
+
+
+                    <pre id="jwt-signature-output" class="jwt-code-output"></pre>
+
+
+                    <div class="jwt-warning">
+
+                        <strong>Signature not verified</strong>
+
+                        <p>
+                            This tool decodes the signature section but
+                            does not verify whether the token was signed
+                            with a valid secret or private key.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Security Warning -->
+                <div class="jwt-warning jwt-important-warning">
+
+                    <strong>Important security note</strong>
+
+                    <p>
+                        Decoding a JWT does not prove that the token is
+                        authentic or trustworthy. Anyone can decode the
+                        header and payload of a JWT. Signature verification
+                        is required to confirm that the token was actually
+                        issued and signed by a trusted source.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT JWT
+        ========================== -->
+        <section class="info-section jwt-info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <div class="eyebrow">
+                        Learn
+                    </div>
+
+                    <h2>What is a JWT?</h2>
+
+                    <p>
+                        JSON Web Token (JWT) is a compact format commonly
+                        used for securely transmitting information between
+                        parties. JWTs are often used for authentication
+                        and authorization in web applications and APIs.
+                    </p>
+
+                    <p>
+                        A JWT normally contains three Base64URL-encoded
+                        sections separated by dots:
+                    </p>
+
+                    <div class="jwt-structure">
+                        <span>Header</span>
+                        <span>.</span>
+                        <span>Payload</span>
+                        <span>.</span>
+                        <span>Signature</span>
+                    </div>
+
+                    <p>
+                        The header describes the token, the payload contains
+                        claims, and the signature is used by a server to
+                        verify that the token has not been modified.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================== -->
+        <section class="info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <div class="eyebrow">
+                        FAQ
+                    </div>
+
+                    <h2>JWT Decoder FAQs</h2>
+
+
+                    <div class="jwt-faq">
+
+                        <details>
+                            <summary>
+                                Is decoding a JWT the same as verifying it?
+                            </summary>
+
+                            <p>
+                                No. Decoding only converts the encoded header
+                                and payload into readable data. Verification
+                                requires checking the token's signature using
+                                the appropriate secret or public key.
+                            </p>
+                        </details>
+
+
+                        <details>
+                            <summary>
+                                Is my JWT uploaded to a server?
+                            </summary>
+
+                            <p>
+                                No. This decoder performs the decoding
+                                directly in your browser and does not need
+                                to send your token to a server.
+                            </p>
+                        </details>
+
+
+                        <details>
+                            <summary>
+                                Can I decode an expired JWT?
+                            </summary>
+
+                            <p>
+                                Yes. An expired token can still be decoded.
+                                The expiration time is displayed so you can
+                                see whether the token has passed its
+                                expiration timestamp.
+                            </p>
+                        </details>
+
+
+                        <details>
+                            <summary>
+                                What are JWT claims?
+                            </summary>
+
+                            <p>
+                                Claims are pieces of information stored in
+                                the JWT payload. Common examples include
+                                issuer, subject, audience, issued-at time
+                                and expiration time.
+                            </p>
+                        </details>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+                    <h3>Dev Tool Kit</h3>
+
+                    <p>
+                        Free browser-based tools for developers and
+                        everyday file tasks.
+                    </p>
+                </div>
+
+
+                <div>
+
+                    <h4>Tools</h4>
+
+                    <div class="footer-links">
+
+                        <a href="./json-yaml-csv-converter.html">
+                            JSON / YAML / CSV Converter
+                        </a>
+
+                        <a href="./jwt-decoder.html">
+                            JWT Decoder
+                        </a>
+
+                        <a href="./regex-tester.html">
+                            Regex Tester
+                        </a>
+
+                        <a href="./zip-opener.html">
+                            ZIP Opener
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h4>More</h4>
+
+                    <div class="footer-links">
+
+                        <a href="../about.html">
+                            About
+                        </a>
+
+                        <a href="../contact.html">
+                            Contact
+                        </a>
+
+                        <a href="../privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="../terms.html">
+                            Terms
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                Advertisement
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © <span data-current-year></span>
+                Dev Tool Kit. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
+    <script src="../js/common.js" defer></script>
+    <script src="../js/jwt.js" defer></script>
+
+</body>
+
+</html>

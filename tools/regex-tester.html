@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Regex Tester | Dev Tool Kit</title>
+
+    <meta name="description"
+        content="Test regular expressions directly in your browser. Find matches, inspect groups and test regex patterns without uploading your data.">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Apply saved theme before page renders -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("dev-tool-kit-theme");
+
+            if (savedTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else if (savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+</head>
+
+<body class="converter-page regex-page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+
+                <a href="../index.html" class="brand" aria-label="Dev Tool Kit Home">
+                    <span class="brand-mark" aria-hidden="true">DT</span>
+                    <span>Dev Tool Kit</span>
+                </a>
+
+                <nav class="main-nav desktop-nav" aria-label="Main navigation">
+
+                    <a href="../index.html">Home</a>
+
+                    <div class="nav-dropdown">
+
+                        <button type="button" class="nav-button nav-dropdown-toggle" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+
+                            <a href="./json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+
+                            <a href="./jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+
+                            <a href="./regex-tester.html">
+                                Regex Tester
+                            </a>
+
+                            <a href="./zip-opener.html">
+                                ZIP Opener
+                            </a>
+
+                            <a href="./pdf-merge-split.html">
+                                PDF Merge &amp; Split
+                            </a>
+
+                            <a href="./image-to-pdf.html">
+                                Image to PDF
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <a href="../about.html">About</a>
+
+                    <a href="../contact.html">Contact</a>
+
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="icon-button theme-toggle" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle mobile-menu-button" data-menu-toggle aria-label="Open navigation menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile navigation -->
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="../index.html">Home</a>
+
+                <a href="./json-yaml-csv-converter.html">
+                    JSON / YAML / CSV Converter
+                </a>
+
+                <a href="./jwt-decoder.html">
+                    JWT Decoder
+                </a>
+
+                <a href="./regex-tester.html">
+                    Regex Tester
+                </a>
+
+                <a href="./zip-opener.html">
+                    ZIP Opener
+                </a>
+
+                <a href="./pdf-merge-split.html">
+                    PDF Merge &amp; Split
+                </a>
+
+                <a href="./image-to-pdf.html">
+                    Image to PDF
+                </a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <a href="../about.html">About</a>
+
+                <a href="../contact.html">Contact</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="page-main tool-page">
+
+        <div class="tool-topbar">
+
+            <a href="../index.html" class="back-to-home">
+                ← Back
+            </a>
+
+        </div>
+
+
+        <!-- Page heading -->
+
+        <section class="tool-page-header">
+
+            <div class="container">
+
+                <div class="eyebrow">
+                    Developer Tool
+                </div>
+
+                <h1>Regex Tester</h1>
+
+                <p>
+                    Test regular expressions directly in your browser.
+                    Find matches, inspect captured groups and experiment
+                    with regex patterns without uploading your data.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             REGEX WORKSPACE
+        ========================== -->
+
+        <section class="container regex-workspace">
+
+
+            <!-- Privacy notice -->
+
+            <div class="regex-security-notice">
+
+                <div class="regex-security-icon">
+                    🔒
+                </div>
+
+                <div>
+
+                    <strong>Your data stays in your browser.</strong>
+
+                    <p>
+                        Regex testing happens locally on your device.
+                        Your pattern and test text are not uploaded
+                        to a server.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Regex input card -->
+
+            <div class="regex-card">
+
+                <div class="regex-card-header">
+
+                    <div>
+
+                        <h2>Regular Expression</h2>
+
+                        <p>
+                            Enter the regex pattern you want to test.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="regex-input-group">
+
+                    <label for="regex-pattern">
+                        Pattern
+                    </label>
+
+                    <div class="regex-pattern-wrapper">
+
+                        <span class="regex-slash">/</span>
+
+                        <input type="text" id="regex-pattern" class="regex-pattern-input"
+                            placeholder="Enter your regex pattern..." spellcheck="false" autocomplete="off">
+
+                        <span class="regex-slash">/</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Flags -->
+
+                <div class="regex-flags">
+
+                    <span class="regex-flags-label">
+                        Flags
+                    </span>
+
+                    <label>
+                        <input type="checkbox" id="flag-g">
+                        <span>g</span>
+                        <small>Global</small>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="flag-i">
+                        <span>i</span>
+                        <small>Ignore case</small>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="flag-m">
+                        <span>m</span>
+                        <small>Multiline</small>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="flag-s">
+                        <span>s</span>
+                        <small>DotAll</small>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="flag-u">
+                        <span>u</span>
+                        <small>Unicode</small>
+                    </label>
+
+                </div>
+
+
+                <!-- Test text -->
+
+                <div class="regex-input-group">
+
+                    <label for="regex-test-text">
+                        Test Text
+                    </label>
+
+                    <textarea id="regex-test-text" class="regex-textarea" rows="9"
+                        placeholder="Enter the text you want to test..." spellcheck="false"></textarea>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="regex-actions">
+
+                    <button type="button" id="regex-example" class="button button-secondary">
+
+                        Load Example
+
+                    </button>
+
+                    <button type="button" id="regex-test" class="button button-primary">
+
+                        Test Regex
+
+                    </button>
+
+                    <button type="button" id="regex-clear" class="button button-secondary">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+                <p class="regex-shortcut">
+                    Tip: Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
+                    to test your regex.
+                </p>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div id="regex-error" class="regex-error" role="alert" hidden>
+            </div>
+
+
+            <!-- =========================
+                 RESULTS
+            ========================== -->
+
+            <div id="regex-results" class="regex-results" hidden>
+
+
+                <!-- Summary -->
+
+                <div class="regex-card">
+
+                    <div class="regex-card-header">
+
+                        <div>
+
+                            <h2>Results</h2>
+
+                            <p>
+                                Matches found in your test text.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="regex-summary">
+
+                        <div class="regex-summary-item">
+
+                            <span>
+                                Matches
+                            </span>
+
+                            <strong id="regex-match-count">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Highlighted text -->
+
+                <div class="regex-card">
+
+                    <div class="regex-result-header">
+
+                        <div>
+
+                            <h2>Highlighted Matches</h2>
+
+                            <p>
+                                Matching portions of your text are
+                                highlighted below.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="regex-highlight" class="regex-highlight">
+                    </div>
+
+                </div>
+
+
+                <!-- Match details -->
+
+                <div class="regex-card">
+
+                    <div class="regex-result-header">
+
+                        <div>
+
+                            <h2>Match Details</h2>
+
+                            <p>
+                                View each match, its position and
+                                captured groups.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="regex-match-details" class="regex-match-details">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             REGEX INFORMATION
+        ========================== -->
+
+        <section class="info-section regex-info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <div class="eyebrow">
+                        Learn
+                    </div>
+
+                    <h2>What is a Regular Expression?</h2>
+
+                    <p>
+                        A regular expression, commonly called regex,
+                        is a pattern used to search, match or manipulate
+                        text. Regex is widely used for tasks such as
+                        finding email addresses, validating input,
+                        searching files and extracting information.
+                    </p>
+
+                    <p>
+                        For example, this pattern can be used to find
+                        simple email addresses:
+                    </p>
+
+                    <pre
+                        class="regex-example-code"><code>\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b</code></pre>
+
+                    <p>
+                        Regex patterns are made from characters and
+                        special symbols that describe what text should
+                        be matched.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMMON EXAMPLES
+        ========================== -->
+
+        <section class="info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <div class="eyebrow">
+                        Examples
+                    </div>
+
+                    <h2>Common Regex Patterns</h2>
+
+
+                    <div class="regex-examples">
+
+                        <div class="regex-example-item">
+
+                            <strong>Email</strong>
+
+                            <code>
+                                [\w.-]+@[\w.-]+\.\w+
+                            </code>
+
+                        </div>
+
+
+                        <div class="regex-example-item">
+
+                            <strong>Numbers</strong>
+
+                            <code>
+                                \d+
+                            </code>
+
+                        </div>
+
+
+                        <div class="regex-example-item">
+
+                            <strong>Letters only</strong>
+
+                            <code>
+                                [A-Za-z]+
+                            </code>
+
+                        </div>
+
+
+                        <div class="regex-example-item">
+
+                            <strong>Whitespace</strong>
+
+                            <code>
+                                \s+
+                            </code>
+
+                        </div>
+
+
+                        <div class="regex-example-item">
+
+                            <strong>Phone number</strong>
+
+                            <code>
+                                \+?\d[\d\s-]{7,}
+                            </code>
+
+                        </div>
+
+
+                        <div class="regex-example-item">
+
+                            <strong>URL</strong>
+
+                            <code>
+                                https?://[^\s]+
+                            </code>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================== -->
+
+        <section class="info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <div class="eyebrow">
+                        FAQ
+                    </div>
+
+                    <h2>Regex Tester FAQs</h2>
+
+
+                    <div class="regex-faq">
+
+                        <details>
+
+                            <summary>
+                                What is regex used for?
+                            </summary>
+
+                            <p>
+                                Regex is commonly used to search,
+                                validate, extract and replace text
+                                based on a defined pattern.
+                            </p>
+
+                        </details>
+
+
+                        <details>
+
+                            <summary>
+                                What does the g flag mean?
+                            </summary>
+
+                            <p>
+                                The global flag tells the regular
+                                expression to find all matching
+                                occurrences instead of stopping after
+                                the first match.
+                            </p>
+
+                        </details>
+
+
+                        <details>
+
+                            <summary>
+                                What does the i flag mean?
+                            </summary>
+
+                            <p>
+                                The i flag makes the pattern
+                                case-insensitive. For example,
+                                an "a" can match both "a" and "A".
+                            </p>
+
+                        </details>
+
+
+                        <details>
+
+                            <summary>
+                                Is my test text uploaded?
+                            </summary>
+
+                            <p>
+                                No. This tool runs the regex directly
+                                in your browser, so your test text
+                                does not need to be sent to a server.
+                            </p>
+
+                        </details>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <h3>Dev Tool Kit</h3>
+
+                    <p>
+                        Free browser-based tools for developers and
+                        everyday file tasks.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>Tools</h4>
+
+                    <div class="footer-links">
+
+                        <a href="./json-yaml-csv-converter.html">
+                            JSON / YAML / CSV Converter
+                        </a>
+
+                        <a href="./jwt-decoder.html">
+                            JWT Decoder
+                        </a>
+
+                        <a href="./regex-tester.html">
+                            Regex Tester
+                        </a>
+
+                        <a href="./zip-opener.html">
+                            ZIP Opener
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h4>More</h4>
+
+                    <div class="footer-links">
+
+                        <a href="../about.html">
+                            About
+                        </a>
+
+                        <a href="../contact.html">
+                            Contact
+                        </a>
+
+                        <a href="../privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="../terms.html">
+                            Terms
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+
+                Advertisement
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © <span data-current-year></span>
+                Dev Tool Kit. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Scripts -->
+
+    <script src="../js/common.js" defer></script>
+    <script src="../js/regex.js" defer></script>
+
+</body>
+
+</html>

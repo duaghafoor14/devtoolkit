@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Privacy Policy | Dev Tool Kit</title>
+
+    <meta name="description"
+        content="Privacy Policy for Dev Tool Kit, a collection of free browser-based developer and file tools.">
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("dev-tool-kit-theme");
+
+            if (savedTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else if (savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="legal-page">
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+
+                <a href="index.html" class="brand" aria-label="Dev Tool Kit Home">
+                    <span class="brand-mark" aria-hidden="true">DT</span>
+                    <span>Dev Tool Kit</span>
+                </a>
+
+                <nav class="main-nav" aria-label="Main navigation">
+
+                    <a href="index.html">Home</a>
+
+                    <div class="nav-dropdown">
+                        <button type="button" class="nav-button nav-dropdown-toggle" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+                            <a href="tools/json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+                            <a href="tools/jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+                            <a href="tools/regex-tester.html">
+                                Regex Tester
+                            </a>
+                            <a href="tools/zip-opener.html">
+                                ZIP Opener
+                            </a>
+                            <a href="tools/pdf-merge-split.html">
+                                PDF Merge &amp; Split
+                            </a>
+                            <a href="tools/image-to-pdf.html">
+                                Image to PDF
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="icon-button theme-toggle" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle mobile-menu-button" data-menu-toggle aria-label="Open navigation menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="index.html">Home</a>
+
+                <a href="tools/json-yaml-csv-converter.html">
+                    JSON / YAML / CSV Converter
+                </a>
+
+                <a href="tools/jwt-decoder.html">
+                    JWT Decoder
+                </a>
+
+                <a href="tools/regex-tester.html">
+                    Regex Tester
+                </a>
+
+                <a href="tools/zip-opener.html">
+                    ZIP Opener
+                </a>
+
+                <a href="tools/pdf-merge-split.html">
+                    PDF Merge &amp; Split
+                </a>
+
+                <a href="tools/image-to-pdf.html">
+                    Image to PDF
+                </a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Page Header -->
+    <section class="legal-page-header">
+
+        <div class="container">
+
+            <div class="eyebrow">Legal</div>
+
+            <h1>Privacy Policy</h1>
+
+            <p>
+                This Privacy Policy explains how Dev Tool Kit handles
+                information when you use our website and browser-based tools.
+            </p>
+
+            <span class="legal-updated">
+                Last updated: October 2, 2026
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- Main Content -->
+    <main class="container legal-main">
+
+        <article class="legal-content">
+
+
+            <section>
+
+                <h2>1. Introduction</h2>
+
+                <p>
+                    Dev Tool Kit is a collection of free browser-based tools
+                    designed for developers, students, and anyone who needs
+                    simple utilities for working with text, code, files, and
+                    other digital content.
+                </p>
+
+                <p>
+                    We respect your privacy and aim to keep the use of our
+                    tools as simple and private as possible. This Privacy
+                    Policy explains how information is handled when you visit
+                    and use Dev Tool Kit.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>2. Information Processed by Our Tools</h2>
+
+                <p>
+                    Many of the tools on Dev Tool Kit process the information
+                    you provide directly inside your web browser.
+                </p>
+
+                <p>
+                    Depending on the tool, this may include JSON, YAML, CSV,
+                    text, regular expressions, JWTs, ZIP files, PDF files,
+                    images, or other content that you choose to process.
+                </p>
+
+                <p>
+                    When a tool is designed for local browser processing,
+                    your files and entered content are processed on your
+                    device and are not intentionally uploaded to a Dev Tool
+                    Kit server.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>3. Files You Upload to the Tools</h2>
+
+                <p>
+                    Dev Tool Kit currently provides browser-based file tools
+                    such as ZIP Opener, PDF Merge &amp; Split, and Image to
+                    PDF.
+                </p>
+
+                <p>
+                    Files selected for these tools are processed locally in
+                    your browser using JavaScript and the required
+                    browser-compatible libraries.
+                </p>
+
+                <p>
+                    Dev Tool Kit does not intentionally store copies of these
+                    files on its servers as part of the normal operation of
+                    these tools.
+                </p>
+
+                <p>
+                    However, you should avoid using any online service with
+                    highly confidential information unless you are comfortable
+                    with the associated risks.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>4. Information You Enter</h2>
+
+                <p>
+                    Some tools allow you to enter text, code, patterns, or
+                    other information directly into the page.
+                </p>
+
+                <p>
+                    This information is processed within your browser for the
+                    relevant tool's functionality. Dev Tool Kit does not
+                    intentionally collect or store the content you enter into
+                    these tools as part of their normal operation.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>5. Local Browser Storage</h2>
+
+                <p>
+                    Dev Tool Kit uses browser storage for limited website
+                    functionality and preferences.
+                </p>
+
+                <p>
+                    For example, your light or dark theme preference may be
+                    stored in your browser using local storage so that the
+                    website can remember your selected appearance when you
+                    return.
+                </p>
+
+                <p>
+                    This information is stored on your device and is not used
+                    to store the files or content processed by the tools.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>6. Cookies</h2>
+
+                <p>
+                    The current Dev Tool Kit tools do not require cookies to
+                    process the files or text that you provide to them.
+                </p>
+
+                <p>
+                    If third-party services are added to the website in the
+                    future, those services may use cookies or similar
+                    technologies according to their own policies.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>7. Advertising</h2>
+
+                <p>
+                    Dev Tool Kit may display third-party advertisements in
+                    the future, including advertisements provided through
+                    services such as Google AdSense.
+                </p>
+
+                <p>
+                    If advertising services are enabled, those services may
+                    use cookies, identifiers, or similar technologies to
+                    provide, measure, or personalize advertisements, subject
+                    to their applicable policies and settings.
+                </p>
+
+                <p>
+                    This Privacy Policy will be updated when necessary to
+                    accurately describe any advertising services that are
+                    enabled on the website.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>8. Third-Party Services</h2>
+
+                <p>
+                    Dev Tool Kit may use third-party services for website
+                    hosting, security, performance, analytics, advertising,
+                    or other technical purposes.
+                </p>
+
+                <p>
+                    When such services are used, the relevant third parties
+                    may process information according to their own privacy
+                    policies and terms.
+                </p>
+
+                <p>
+                    Dev Tool Kit does not control the privacy practices of
+                    independent third-party services.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>9. Links to Other Websites</h2>
+
+                <p>
+                    Dev Tool Kit may contain links to external websites or
+                    services.
+                </p>
+
+                <p>
+                    We are not responsible for the privacy practices, content,
+                    or security of external websites. You should review the
+                    privacy policy of any external website you choose to
+                    visit.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>10. Children's Privacy</h2>
+
+                <p>
+                    Dev Tool Kit is a general-purpose website and is not
+                    specifically designed to collect personal information
+                    from children.
+                </p>
+
+                <p>
+                    We do not knowingly request personal information from
+                    children through our tools.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>11. Data Security</h2>
+
+                <p>
+                    We use reasonable technical measures to operate and
+                    protect the website.
+                </p>
+
+                <p>
+                    Because Dev Tool Kit operates over the internet, however,
+                    no website, browser, or electronic transmission can be
+                    guaranteed to be completely secure.
+                </p>
+
+                <p>
+                    You are responsible for deciding whether information is
+                    appropriate to process using an online browser-based tool.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>12. Your Choices</h2>
+
+                <p>
+                    You can stop using Dev Tool Kit at any time.
+                </p>
+
+                <p>
+                    You can also clear locally stored website data through
+                    your browser settings. This may remove preferences such
+                    as your saved theme selection.
+                </p>
+
+                <p>
+                    If third-party advertising or other services are enabled,
+                    additional privacy and advertising controls may be
+                    available through those services.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>13. Changes to This Privacy Policy</h2>
+
+                <p>
+                    Dev Tool Kit may update this Privacy Policy when the
+                    website, its tools, or its services change.
+                </p>
+
+                <p>
+                    When changes are made, the updated version will be
+                    published on this page and the "Last updated" date will
+                    be changed accordingly.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <h2>14. Contact</h2>
+
+                <p>
+                    If you have questions about this Privacy Policy or the
+                    privacy practices of Dev Tool Kit, please contact us
+                    through our
+                    <a href="contact.html">Contact page</a>.
+                </p>
+
+            </section>
+
+
+        </article>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <div>
+
+                <strong>Dev Tool Kit</strong>
+
+                <p>
+                    Simple browser-based tools for everyday development tasks.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="about.html">About</a>
+
+                <a href="contact.html">Contact</a>
+
+                <a href="privacy-policy.html">Privacy</a>
+
+                <a href="terms.html">Terms</a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/common.js" defer></script>
+
+</body>
+
+</html>

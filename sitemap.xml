@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/about.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/contact.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/privacy-policy.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/terms.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/tools/json-yaml-csv-converter.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/tools/jwt-decoder.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/tools/regex-tester.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/tools/zip-opener.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/tools/pdf-merge-split.html</loc>
+    </url>
+
+    <url>
+        <loc>https://YOUR-DOMAIN.com/tools/image-to-pdf.html</loc>
+    </url>
+
+</urlset>

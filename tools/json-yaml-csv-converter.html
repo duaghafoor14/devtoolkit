@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JSON / YAML / CSV Converter — Dev Tool Kit</title>
+
+    <meta name="description"
+        content="Free browser-based JSON, YAML and CSV converter. Convert, format, validate, copy and download your data without uploading it.">
+
+    <meta name="keywords"
+        content="JSON converter, YAML converter, CSV converter, JSON to CSV, CSV to JSON, JSON to YAML, YAML to JSON, developer tools">
+
+    <meta name="author" content="Dev Tool Kit">
+
+    <link rel="canonical" href="https://[DOMAIN]/tools/json-yaml-csv-converter.html">
+
+    <meta property="og:title" content="JSON / YAML / CSV Converter — Dev Tool Kit">
+
+    <meta property="og:description" content="Convert JSON, YAML and CSV directly in your browser.">
+
+    <meta property="og:url" content="https://[DOMAIN]/tools/json-yaml-csv-converter.html">
+
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("dev-tool-kit-theme");
+
+            if (savedTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else if (savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.5.3/papaparse.min.js"></script>
+
+    <script src="../js/common.js" defer></script>
+    <script src="../js/converter.js" defer></script>
+</head>
+
+<body class="converter-page">
+
+    <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+
+                <a href="../index.html" class="brand" aria-label="Dev Tool Kit Home">
+                    <span class="brand-mark" aria-hidden="true">DT</span>
+                    <span>Dev Tool Kit</span>
+                </a>
+
+                <nav class="main-nav desktop-nav" aria-label="Main navigation">
+
+                    <a href="../index.html">Home</a>
+
+                    <div class="nav-dropdown">
+
+                        <button type="button" class="nav-button nav-dropdown-toggle" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+
+                            <a href="./json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+
+                            <a href="./jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+
+                            <a href="./regex-tester.html">
+                                Regex Tester
+                            </a>
+
+                            <a href="./zip-opener.html">
+                                ZIP Opener
+                            </a>
+
+                            <a href="./pdf-merge-split.html">
+                                PDF Merge &amp; Split
+                            </a>
+
+                            <a href="./image-to-pdf.html">
+                                Image to PDF
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <a href="../about.html">About</a>
+
+                    <a href="../contact.html">Contact</a>
+
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="icon-button theme-toggle" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle mobile-menu-button" data-menu-toggle aria-label="Open navigation menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="../index.html">Home</a>
+
+                <a href="./json-yaml-csv-converter.html">
+                    JSON / YAML / CSV Converter
+                </a>
+
+                <a href="./jwt-decoder.html">
+                    JWT Decoder
+                </a>
+
+                <a href="./regex-tester.html">
+                    Regex Tester
+                </a>
+
+                <a href="./zip-opener.html">
+                    ZIP Opener
+                </a>
+
+                <a href="./pdf-merge-split.html">
+                    PDF Merge &amp; Split
+                </a>
+
+                <a href="./image-to-pdf.html">
+                    Image to PDF
+                </a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <a href="../about.html">About</a>
+
+                <a href="../contact.html">Contact</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+    <main class="page-main tool-page">
+
+        <!-- Back button: RIGHT CORNER BELOW HEADER -->
+
+        <div class="tool-topbar">
+
+            <a href="../index.html" class="back-to-home">
+                ← Back
+            </a>
+
+        </div>
+
+
+        <!-- Tool heading -->
+
+        <section class="tool-page-header">
+
+            <div class="container">
+                <div class="eyebrow">
+                    Developer Tool
+                </div>
+
+                <h1>
+                    JSON / YAML / CSV Converter
+                </h1>
+
+                <p>
+                    Convert data between JSON, YAML and CSV directly in your browser.
+                    Format, validate, copy and download your converted data without
+                    uploading anything to a server.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Top Advertisement Placeholder -->
+
+        <div class="container">
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                Advertisement
+            </div>
+
+        </div>
+
+
+        <!-- Converter -->
+
+        <section class="container">
+
+            <div class="tool-workspace">
+
+                <!-- Format controls -->
+
+                <div class="converter-controls">
+
+                    <div class="format-control">
+
+                        <label for="fromFormat">
+                            From
+                        </label>
+
+                        <select id="fromFormat">
+
+                            <option value="json">
+                                JSON
+                            </option>
+
+                            <option value="yaml">
+                                YAML
+                            </option>
+
+                            <option value="csv">
+                                CSV
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button type="button" id="swapFormats" class="swap-button" title="Swap formats"
+                        aria-label="Swap formats">
+                        ⇄
+                    </button>
+
+
+                    <div class="format-control">
+
+                        <label for="toFormat">
+                            To
+                        </label>
+
+                        <select id="toFormat">
+
+                            <option value="yaml">
+                                YAML
+                            </option>
+
+                            <option value="json">
+                                JSON
+                            </option>
+
+                            <option value="csv">
+                                CSV
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Input / Output -->
+
+                <div class="converter-panels">
+
+                    <!-- Input -->
+
+                    <div class="converter-panel">
+
+                        <div class="converter-panel-header">
+
+                            <h2>
+                                Input
+                            </h2>
+
+                            <button type="button" class="btn btn-secondary" id="loadSample">
+                                Load Sample
+                            </button>
+
+                        </div>
+
+                        <textarea id="inputData" aria-label="Input data"
+                            placeholder="Paste your JSON, YAML or CSV here..." spellcheck="false"></textarea>
+
+                    </div>
+
+
+                    <!-- Output -->
+
+                    <div class="converter-panel">
+
+                        <div class="converter-panel-header">
+
+                            <h2>
+                                Output
+                            </h2>
+
+                            <button type="button" class="btn btn-secondary" id="copyOutput">
+                                Copy
+                            </button>
+
+                        </div>
+
+                        <textarea id="outputData" aria-label="Converted output"
+                            placeholder="Converted result will appear here..." spellcheck="false" readonly></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- JSON options -->
+
+                <div class="converter-options" id="jsonOptions">
+
+                    <div class="json-options">
+
+                        <label for="jsonIndent">
+                            JSON Indent
+                        </label>
+
+                        <select id="jsonIndent">
+
+                            <option value="2">
+                                2 spaces
+                            </option>
+
+                            <option value="4">
+                                4 spaces
+                            </option>
+
+                            <option value="tab">
+                                Tab
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Actions -->
+
+                <div class="converter-actions">
+
+                    <button type="button" class="btn btn-primary" id="convertBtn">
+                        Convert
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" id="formatJsonBtn">
+                        Format JSON
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" id="minifyJsonBtn">
+                        Minify JSON
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" id="validateJsonBtn">
+                        Validate JSON
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" id="downloadBtn">
+                        Download
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" id="clearBtn">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <!-- Status -->
+
+                <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Information -->
+
+        <section class="info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <h2>
+                        About this JSON, YAML &amp; CSV converter
+                    </h2>
+
+                    <p>
+                        This free converter lets you quickly transform structured data
+                        between JSON, YAML and CSV formats. It is useful when working with
+                        APIs, configuration files, spreadsheets, datasets and development
+                        projects.
+                    </p>
+
+                    <p>
+                        Your data is processed directly inside your browser. The tool does
+                        not require an account and does not upload your input to a server.
+                        You can format JSON, validate JSON, convert between supported
+                        formats, copy the result or download it as a file.
+                    </p>
+
+                    <p>
+                        For CSV data, the converter supports headers, quoted values and
+                        common CSV structures. JSON arrays of objects can also be converted
+                        into CSV tables.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Bottom Advertisement -->
+
+        <div class="container">
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                Advertisement
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <h3>
+                        Dev Tool Kit
+                    </h3>
+
+                    <p>
+                        Free browser-based tools for developers and everyday file tasks.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Tools
+                    </h4>
+
+                    <div class="footer-links">
+
+                        <a href="./json-yaml-csv-converter.html">
+                            JSON / YAML / CSV Converter
+                        </a>
+
+                        <a href="./jwt-decoder.html">
+                            JWT Decoder
+                        </a>
+
+                        <a href="./regex-tester.html">
+                            Regex Tester
+                        </a>
+
+                        <a href="./zip-opener.html">
+                            ZIP Opener
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        More
+                    </h4>
+
+                    <div class="footer-links">
+
+                        <a href="../about.html">
+                            About
+                        </a>
+
+                        <a href="../contact.html">
+                            Contact
+                        </a>
+
+                        <a href="../privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="../terms.html">
+                            Terms
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                Advertisement
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © <span data-current-year></span>
+                Dev Tool Kit. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

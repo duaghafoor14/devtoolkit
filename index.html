@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dev Tool Kit — Free Developer & File Tools</title>
+
+    <meta name="description"
+        content="Dev Tool Kit offers free browser-based developer and file tools for converting data, decoding JWTs, testing regex, opening ZIP files, editing PDFs, and converting images to PDF." />
+
+    <meta name="keywords"
+        content="developer tools, online tools, JSON converter, YAML converter, CSV converter, JWT decoder, regex tester, ZIP opener, PDF tools, image to PDF" />
+
+    <meta name="author" content="Dev Tool Kit" />
+
+    <!-- Replace [DOMAIN] with your real domain before deployment -->
+    <link rel="canonical" href="https://[DOMAIN]/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dev Tool Kit — Free Developer & File Tools" />
+    <meta property="og:description"
+        content="Free browser-based tools for developers and everyday file tasks. No uploads, no sign-up." />
+    <meta property="og:url" content="https://[DOMAIN]/" />
+    <meta property="og:site_name" content="Dev Tool Kit" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- Prevent theme flash -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("dev-tool-kit-theme");
+
+            if (savedTheme === "dark" || savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", savedTheme);
+                return;
+            }
+
+            const prefersDark =
+                window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            document.documentElement.setAttribute(
+                "data-theme",
+                prefersDark ? "dark" : "light"
+            );
+        })();
+    </script>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- =====================================================
+       Homepage Structured Data
+       ===================================================== -->
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Dev Tool Kit",
+      "url": "https://[DOMAIN]/",
+      "description": "Free browser-based developer and file utility tools.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://[DOMAIN]/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+    <!-- Accessibility -->
+    <a class="skip-link" href="#main-content">
+        Skip to main content
+    </a>
+
+    <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+    <header class="site-header">
+        <div class="container">
+
+            <div class="header-inner">
+
+                <a class="brand" href="index.html" aria-label="Dev Tool Kit Home">
+
+                    <span class="brand-mark" aria-hidden="true">
+                        DT
+                    </span>
+
+                    <span>
+                        Dev Tool Kit
+                    </span>
+
+                </a>
+
+                <!-- Desktop Navigation -->
+
+                <nav class="main-nav" aria-label="Main navigation">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <div class="nav-dropdown">
+
+                        <button class="nav-button" type="button" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+
+                            <a href="tools/json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+
+                            <a href="tools/jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+
+                            <a href="tools/regex-tester.html">
+                                Regex Tester
+                            </a>
+
+                            <a href="tools/zip-opener.html">
+                                ZIP Opener
+                            </a>
+
+                            <a href="tools/pdf-merge-split.html">
+                                PDF Merge & Split
+                            </a>
+
+                            <a href="tools/image-to-pdf.html">
+                                Image to PDF
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </nav>
+
+                <!-- Header Actions -->
+
+                <div class="header-actions">
+
+                    <button class="icon-button" type="button" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Mobile Navigation -->
+
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="tools/json-yaml-csv-converter.html">
+                    JSON / YAML / CSV Converter
+                </a>
+
+                <a href="tools/jwt-decoder.html">
+                    JWT Decoder
+                </a>
+
+                <a href="tools/regex-tester.html">
+                    Regex Tester
+                </a>
+
+                <a href="tools/zip-opener.html">
+                    ZIP Opener
+                </a>
+
+                <a href="tools/pdf-merge-split.html">
+                    PDF Merge & Split
+                </a>
+
+                <a href="tools/image-to-pdf.html">
+                    Image to PDF
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main id="main-content" class="main-content">
+
+        <!-- ===================================================
+         HERO
+         =================================================== -->
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <div class="hero-badge">
+                        Free • Browser-Based • No Sign-Up
+                    </div>
+
+                    <h1>
+                        Dev <span>Tool Kit</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Free, fast, browser-based tools for developers and everyday
+                        file tasks. Convert, decode, test, organize, and transform
+                        your files without uploading them to a server.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a class="button button-primary" href="#tools">
+                            Explore Tools
+                        </a>
+
+                        <a class="button button-secondary" href="#why">
+                            How It Works
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- =================================================
+             Search
+             ================================================= -->
+
+                <div class="search-wrapper">
+
+                    <div class="search-box">
+
+                        <span class="search-icon" aria-hidden="true">
+                            🔍
+                        </span>
+
+                        <label for="tool-search" class="hidden">
+                            Search tools
+                        </label>
+
+                        <input id="tool-search" type="search" placeholder="Search a tool..." autocomplete="off"
+                            aria-label="Search tools" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================
+         TOP AD PLACEHOLDER
+         =================================================== -->
+
+        <div class="container">
+
+            <!--
+        ADSENSE PLACEHOLDER
+
+        Replace this placeholder with an approved AdSense
+        ad unit after your site is approved.
+
+        Do NOT add AdSense code before approval.
+      -->
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                <span>
+                    Advertisement
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- ===================================================
+         TOOLS
+         =================================================== -->
+
+        <section class="section" id="tools">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Free Tools for Developers & File Tasks
+                    </h2>
+
+                    <p>
+                        Choose a tool below to get started. Everything runs
+                        directly in your browser.
+                    </p>
+
+                </div>
+
+
+                <div class="tool-grid" id="tool-grid">
+
+                    <!-- Tool 1 -->
+
+                    <article class="tool-card" data-tool-card data-search="json yaml csv converter data format">
+
+                        <div class="tool-icon" aria-hidden="true">
+                            &lt;/&gt;
+                        </div>
+
+                        <h3>
+                            JSON / YAML / CSV Converter
+                        </h3>
+
+                        <p>
+                            Convert data between JSON, YAML, and CSV. Format,
+                            minify, validate, and download your converted data.
+                        </p>
+
+                        <a class="button button-primary" href="tools/json-yaml-csv-converter.html">
+                            Open Converter
+                        </a>
+
+                    </article>
+
+
+                    <!-- Tool 2 -->
+
+                    <article class="tool-card" data-tool-card data-search="jwt json web token decoder token">
+
+                        <div class="tool-icon" aria-hidden="true">
+                            JWT
+                        </div>
+
+                        <h3>
+                            JWT Decoder
+                        </h3>
+
+                        <p>
+                            Decode JWT headers and payloads, inspect timestamps,
+                            and understand token information without sending it
+                            anywhere.
+                        </p>
+
+                        <a class="button button-primary" href="tools/jwt-decoder.html">
+                            Open Decoder
+                        </a>
+
+                    </article>
+
+
+                    <!-- Tool 3 -->
+
+                    <article class="tool-card" data-tool-card data-search="regex regular expression tester pattern">
+
+                        <div class="tool-icon" aria-hidden="true">
+                            .*
+                        </div>
+
+                        <h3>
+                            Regex Tester
+                        </h3>
+
+                        <p>
+                            Test regular expressions, highlight matches, inspect
+                            capture groups, and understand common regex syntax.
+                        </p>
+
+                        <a class="button button-primary" href="tools/regex-tester.html">
+                            Open Tester
+                        </a>
+
+                    </article>
+
+
+                    <!-- Tool 4 -->
+
+                    <article class="tool-card" data-tool-card data-search="zip opener archive files folders">
+
+                        <div class="tool-icon" aria-hidden="true">
+                            ZIP
+                        </div>
+
+                        <h3>
+                            ZIP Opener
+                        </h3>
+
+                        <p>
+                            Open ZIP archives in your browser, explore files and
+                            folders, preview supported files, and download them.
+                        </p>
+
+                        <a class="button button-primary" href="tools/zip-opener.html">
+                            Open ZIP Tool
+                        </a>
+
+                    </article>
+
+
+                    <!-- Tool 5 -->
+
+                    <article class="tool-card" data-tool-card data-search="pdf merge split extract pages">
+
+                        <div class="tool-icon" aria-hidden="true">
+                            PDF
+                        </div>
+
+                        <h3>
+                            PDF Merge & Split
+                        </h3>
+
+                        <p>
+                            Combine multiple PDFs into one file or extract
+                            selected pages into a new PDF directly in your browser.
+                        </p>
+
+                        <a class="button button-primary" href="tools/pdf-merge-split.html">
+                            Open PDF Tool
+                        </a>
+
+                    </article>
+
+
+                    <!-- Tool 6 -->
+
+                    <article class="tool-card" data-tool-card data-search="image jpg png pdf converter">
+
+                        <div class="tool-icon" aria-hidden="true">
+                            IMG
+                        </div>
+
+                        <h3>
+                            Image to PDF
+                        </h3>
+
+                        <p>
+                            Convert JPG and PNG images into a PDF with options
+                            for page size, orientation, margins, and image order.
+                        </p>
+
+                        <a class="button button-primary" href="tools/image-to-pdf.html">
+                            Open Image Tool
+                        </a>
+
+                    </article>
+
+                </div>
+
+
+                <!-- No search results -->
+
+                <div id="no-tools-message" class="empty-state hidden" aria-live="polite">
+                    No tools match your search.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================
+         MIDDLE AD PLACEHOLDER
+         =================================================== -->
+
+        <div class="container">
+
+            <!--
+        ADSENSE PLACEHOLDER
+
+        Reserved space for a future approved ad unit.
+      -->
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                <span>
+                    Advertisement
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- ===================================================
+         WHY DEV TOOL KIT
+         =================================================== -->
+
+        <section class="section" id="why">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Why Use Dev Tool Kit?
+                    </h2>
+
+                    <p>
+                        Simple tools designed to get the job done without
+                        unnecessary setup or complicated interfaces.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-grid">
+
+                    <article class="feature-card">
+
+                        <h3>
+                            ⚡ Fast
+                        </h3>
+
+                        <p>
+                            Tools run directly in your browser, so there is no
+                            waiting for files to upload to a remote server.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <h3>
+                            🔒 Private
+                        </h3>
+
+                        <p>
+                            Your files and text are processed locally in your
+                            browser instead of being uploaded to our servers.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <h3>
+                            🆓 Free
+                        </h3>
+
+                        <p>
+                            Use the available tools without creating an account
+                            or paying for a subscription.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <h3>
+                            📱 Browser-Based
+                        </h3>
+
+                        <p>
+                            Use Dev Tool Kit from your desktop, laptop, tablet,
+                            or mobile browser without installing software.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================
+         HOW IT WORKS
+         =================================================== -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <h2>
+                        How It Works
+                    </h2>
+
+                    <p>
+                        No complicated setup. Pick a tool and start working.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-grid">
+
+                    <article class="feature-card">
+
+                        <h3>
+                            1. Choose a Tool
+                        </h3>
+
+                        <p>
+                            Select the developer or file utility that matches
+                            what you need to do.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <h3>
+                            2. Add Your Data
+                        </h3>
+
+                        <p>
+                            Paste your text or select the files you want to
+                            process.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <h3>
+                            3. Process Locally
+                        </h3>
+
+                        <p>
+                            The tool performs the operation inside your browser
+                            using client-side JavaScript.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <h3>
+                            4. Get Your Result
+                        </h3>
+
+                        <p>
+                            Copy, download, preview, or continue working with
+                            the result.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================
+         FAQ
+         =================================================== -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Frequently Asked Questions
+                    </h2>
+
+                    <p>
+                        A few things you should know before using the tools.
+                    </p>
+
+                </div>
+
+
+                <div class="faq-list">
+
+                    <details class="faq-item">
+
+                        <summary>
+                            Do I need to create an account?
+                        </summary>
+
+                        <div class="faq-answer">
+                            No. Dev Tool Kit is designed to work without
+                            registration or a user account.
+                        </div>
+
+                    </details>
+
+
+                    <details class="faq-item">
+
+                        <summary>
+                            Are my files uploaded to a server?
+                        </summary>
+
+                        <div class="faq-answer">
+                            No. The tools are designed to process supported
+                            files and text directly inside your browser.
+                            Your files are not intentionally uploaded to a
+                            Dev Tool Kit server.
+                        </div>
+
+                    </details>
+
+
+                    <details class="faq-item">
+
+                        <summary>
+                            Can I use the tools on my phone?
+                        </summary>
+
+                        <div class="faq-answer">
+                            Yes. The website is responsive and the tools are
+                            designed to work on modern desktop and mobile browsers.
+                        </div>
+
+                    </details>
+
+
+                    <details class="faq-item">
+
+                        <summary>
+                            Is the JWT Decoder verifying my token?
+                        </summary>
+
+                        <div class="faq-answer">
+                            No. The JWT Decoder only decodes the token so you can
+                            inspect its contents. Decoding a JWT does not verify
+                            its signature or prove that the token is authentic.
+                        </div>
+
+                    </details>
+
+
+                    <details class="faq-item">
+
+                        <summary>
+                            Are the tools completely free?
+                        </summary>
+
+                        <div class="faq-answer">
+                            The tools provided on Dev Tool Kit are intended to be
+                            free to use. Availability and supported features may
+                            change as the website develops.
+                        </div>
+
+                    </details>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================
+         BOTTOM AD PLACEHOLDER
+         =================================================== -->
+
+        <div class="container">
+
+            <!--
+        ADSENSE PLACEHOLDER
+
+        Reserved space for a future approved ad unit.
+      -->
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                <span>
+                    Advertisement
+                </span>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <!-- Brand -->
+
+                <div class="footer-brand">
+
+                    <a class="brand" href="index.html">
+
+                        <span class="brand-mark" aria-hidden="true">
+                            DT
+                        </span>
+
+                        <span>
+                            Dev Tool Kit
+                        </span>
+
+                    </a>
+
+                    <p>
+                        Free browser-based developer and file utility tools
+                        designed to be simple, fast, and privacy-friendly.
+                    </p>
+
+                </div>
+
+
+                <!-- Tools -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        Tools
+                    </h3>
+
+                    <div class="footer-links">
+
+                        <a href="tools/json-yaml-csv-converter.html">
+                            Data Converter
+                        </a>
+
+                        <a href="tools/jwt-decoder.html">
+                            JWT Decoder
+                        </a>
+
+                        <a href="tools/regex-tester.html">
+                            Regex Tester
+                        </a>
+
+                        <a href="tools/zip-opener.html">
+                            ZIP Opener
+                        </a>
+
+                        <a href="tools/pdf-merge-split.html">
+                            PDF Tools
+                        </a>
+
+                        <a href="tools/image-to-pdf.html">
+                            Image to PDF
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Company / Legal -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        Dev Tool Kit
+                    </h3>
+
+                    <div class="footer-links">
+
+                        <a href="about.html">
+                            About
+                        </a>
+
+                        <a href="contact.html">
+                            Contact
+                        </a>
+
+                        <a href="privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="terms.html">
+                            Terms
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer Ad Placeholder -->
+
+            <!--
+        ADSENSE PLACEHOLDER
+
+        Reserved space for a future approved footer ad.
+      -->
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                <span>
+                    Advertisement
+                </span>
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span data-current-year></span>
+                    Dev Tool Kit. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+    <script src="js/common.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const searchInput =
+                document.getElementById("tool-search");
+
+            const toolCards =
+                document.querySelectorAll("[data-tool-card]");
+
+            const noToolsMessage =
+                document.getElementById("no-tools-message");
+
+
+            if (!searchInput) {
+                return;
+            }
+
+
+            function filterTools() {
+
+                const searchTerm =
+                    searchInput.value.trim().toLowerCase();
+
+                let visibleCount = 0;
+
+
+                toolCards.forEach(function (card) {
+
+                    const searchableText =
+                        (
+                            card.textContent +
+                            " " +
+                            (card.dataset.search || "")
+                        ).toLowerCase();
+
+
+                    const matches =
+                        searchableText.includes(searchTerm);
+
+
+                    card.style.display =
+                        matches ? "" : "none";
+
+
+                    if (matches) {
+                        visibleCount++;
+                    }
+
+                });
+
+
+                if (noToolsMessage) {
+
+                    noToolsMessage.classList.toggle(
+                        "hidden",
+                        visibleCount !== 0
+                    );
+
+                }
+
+            }
+
+
+            searchInput.addEventListener(
+                "input",
+                filterTools
+            );
+
+
+            /* Allow URL search:
+               ?search=jwt
+            */
+
+            const urlParams =
+                new URLSearchParams(window.location.search);
+
+            const urlSearch =
+                urlParams.get("search");
+
+
+            if (urlSearch) {
+
+                searchInput.value =
+                    urlSearch;
+
+                filterTools();
+
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

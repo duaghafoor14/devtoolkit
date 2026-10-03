@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZIP Opener | Dev Tool Kit</title>
+
+    <meta name="description"
+        content="Open and inspect ZIP files directly in your browser. View files inside ZIP archives and extract individual files without uploading anything.">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Apply saved theme before page renders -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("dev-tool-kit-theme");
+
+            if (savedTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else if (savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+</head>
+
+<body class="converter-page zip-page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+
+                <a href="../index.html" class="brand" aria-label="Dev Tool Kit Home">
+                    <span class="brand-mark" aria-hidden="true">DT</span>
+                    <span>Dev Tool Kit</span>
+                </a>
+
+                <nav class="main-nav desktop-nav" aria-label="Main navigation">
+
+                    <a href="../index.html">Home</a>
+
+                    <div class="nav-dropdown">
+
+                        <button type="button" class="nav-button nav-dropdown-toggle" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+
+                            <a href="./json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+
+                            <a href="./jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+
+                            <a href="./regex-tester.html">
+                                Regex Tester
+                            </a>
+
+                            <a href="./zip-opener.html">
+                                ZIP Opener
+                            </a>
+
+                            <a href="./pdf-merge-split.html">
+                                PDF Merge &amp; Split
+                            </a>
+
+                            <a href="./image-to-pdf.html">
+                                Image to PDF
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="icon-button theme-toggle" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle mobile-menu-button" data-menu-toggle aria-label="Open navigation menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="../index.html">Home</a>
+
+                <a href="./json-yaml-csv-converter.html">
+                    JSON / YAML / CSV Converter
+                </a>
+
+                <a href="./jwt-decoder.html">
+                    JWT Decoder
+                </a>
+
+                <a href="./regex-tester.html">
+                    Regex Tester
+                </a>
+
+                <a href="./zip-opener.html">
+                    ZIP Opener
+                </a>
+
+                <a href="./pdf-merge-split.html">
+                    PDF Merge &amp; Split
+                </a>
+
+                <a href="./image-to-pdf.html">
+                    Image to PDF
+                </a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="page-main tool-page">
+
+        <!-- Back -->
+
+        <div class="tool-topbar">
+
+            <a href="../index.html" class="back-to-home">
+                ← Back
+            </a>
+
+        </div>
+
+
+        <!-- Page Header -->
+
+        <section class="tool-page-header">
+
+            <div class="container">
+
+                <div class="eyebrow">
+                    File Tool
+                </div>
+
+                <h1>ZIP Opener</h1>
+
+                <p>
+                    Open and inspect ZIP files directly in your browser.
+                    View the files inside an archive and download individual
+                    files without uploading anything.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ZIP WORKSPACE
+        ========================== -->
+
+        <section class="container zip-workspace">
+
+            <!-- Security Notice -->
+
+            <div class="zip-security-notice">
+
+                <div class="zip-security-icon">
+                    🔒
+                </div>
+
+                <div>
+
+                    <strong>Your ZIP file stays in your browser.</strong>
+
+                    <p>
+                        Files are processed locally on your device.
+                        Nothing is uploaded or sent to a server.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Upload Card -->
+
+            <div class="zip-card">
+
+                <div class="zip-card-header">
+
+                    <div>
+
+                        <h2>Open ZIP File</h2>
+
+                        <p>
+                            Select a ZIP archive from your device.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label for="zip-input" class="zip-drop-zone">
+
+                    <div class="zip-upload-icon">
+                        📦
+                    </div>
+
+                    <strong>
+                        Choose a ZIP file
+                    </strong>
+
+                    <span>
+                        Click here to select a .zip archive
+                    </span>
+
+                    <input type="file" id="zip-input" accept=".zip,application/zip" hidden>
+
+                </label>
+
+
+                <div class="zip-actions">
+
+                    <button type="button" id="zip-example" class="button button-secondary">
+
+                        Load Example
+
+                    </button>
+
+                    <button type="button" id="zip-clear" class="button button-secondary">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div id="zip-error" class="zip-error" role="alert" hidden>
+            </div>
+
+
+            <!-- =========================
+                 RESULTS
+            ========================== -->
+
+            <div id="zip-results" class="zip-results" hidden>
+
+
+                <!-- Archive Summary -->
+
+                <div class="zip-card">
+
+                    <div class="zip-result-header">
+
+                        <div>
+
+                            <h2 id="zip-file-name">
+                                ZIP Archive
+                            </h2>
+
+                            <p>
+                                Files and folders found inside the archive.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="zip-summary">
+
+                        <div class="zip-summary-item">
+
+                            <span>
+                                Files
+                            </span>
+
+                            <strong id="zip-file-count">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="zip-summary-item">
+
+                            <span>
+                                Folders
+                            </span>
+
+                            <strong id="zip-folder-count">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="zip-summary-item">
+
+                            <span>
+                                Archive Size
+                            </span>
+
+                            <strong id="zip-archive-size">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- File List -->
+
+                <div class="zip-card">
+
+                    <div class="zip-result-header">
+
+                        <div>
+
+                            <h2>
+                                Archive Contents
+                            </h2>
+
+                            <p>
+                                Browse the files stored inside this ZIP archive.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="zip-file-list" class="zip-file-list">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT ZIP
+        ========================== -->
+
+        <section class="info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <div class="eyebrow">
+                        Learn
+                    </div>
+
+                    <h2>What is a ZIP file?</h2>
+
+                    <p>
+                        A ZIP file is an archive that can contain multiple
+                        files and folders in a single compressed package.
+                        ZIP archives are commonly used to reduce file size
+                        and make it easier to share groups of files.
+                    </p>
+
+                    <p>
+                        This tool lets you inspect the contents of a ZIP
+                        archive directly in your browser without uploading
+                        the archive to a server.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================== -->
+
+        <section class="info-section">
+
+            <div class="container">
+
+                <div class="info-card">
+
+                    <div class="eyebrow">
+                        FAQ
+                    </div>
+
+                    <h2>ZIP Opener FAQs</h2>
+
+
+                    <div class="zip-faq">
+
+                        <details>
+
+                            <summary>
+                                Is my ZIP file uploaded to a server?
+                            </summary>
+
+                            <p>
+                                No. The ZIP archive is processed directly
+                                in your browser. Your file does not need
+                                to be uploaded to a server.
+                            </p>
+
+                        </details>
+
+
+                        <details>
+
+                            <summary>
+                                Can I view files inside a ZIP archive?
+                            </summary>
+
+                            <p>
+                                Yes. After selecting a ZIP file, the tool
+                                displays the files and folders contained
+                                inside the archive.
+                            </p>
+
+                        </details>
+
+
+                        <details>
+
+                            <summary>
+                                Can I download an individual file?
+                            </summary>
+
+                            <p>
+                                Yes. Individual files can be extracted from
+                                the archive and downloaded to your device.
+                            </p>
+
+                        </details>
+
+
+                        <details>
+
+                            <summary>
+                                Does opening a ZIP file extract everything?
+                            </summary>
+
+                            <p>
+                                No. The tool first displays the archive
+                                contents. You can then choose which
+                                individual files you want to extract.
+                            </p>
+
+                        </details>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <h3>Dev Tool Kit</h3>
+
+                    <p>
+                        Free browser-based tools for developers and
+                        everyday file tasks.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>Tools</h4>
+
+                    <div class="footer-links">
+
+                        <a href="./json-yaml-csv-converter.html">
+                            JSON / YAML / CSV Converter
+                        </a>
+
+                        <a href="./jwt-decoder.html">
+                            JWT Decoder
+                        </a>
+
+                        <a href="./regex-tester.html">
+                            Regex Tester
+                        </a>
+
+                        <a href="./zip-opener.html">
+                            ZIP Opener
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h4>More</h4>
+
+                    <div class="footer-links">
+
+                        <a href="../about.html">
+                            About
+                        </a>
+
+                        <a href="../contact.html">
+                            Contact
+                        </a>
+
+                        <a href="../privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="../terms.html">
+                            Terms
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+
+                Advertisement
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                ©
+                <span data-current-year></span>
+
+                Dev Tool Kit. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
+    <script src="../js/jszip.min.js"></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/zip.js" defer></script>
+</body>
+
+</html>

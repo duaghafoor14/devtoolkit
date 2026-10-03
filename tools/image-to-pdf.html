@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image to PDF | Dev Tool Kit</title>
+    <meta name="description" content="Convert JPG, PNG, and WebP images into a single PDF directly in your browser.">
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("dev-tool-kit-theme");
+
+            if (savedTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else if (savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="converter-page image-pdf-page">
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+
+                <a href="../index.html" class="brand" aria-label="Dev Tool Kit Home">
+                    <span class="brand-mark" aria-hidden="true">DT</span>
+                    <span>Dev Tool Kit</span>
+                </a>
+
+                <nav class="main-nav desktop-nav" aria-label="Main navigation">
+
+                    <a href="../index.html">Home</a>
+
+                    <div class="nav-dropdown">
+                        <button type="button" class="nav-button nav-dropdown-toggle" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+                            <a href="./json-yaml-csv-converter.html">JSON / YAML / CSV Converter</a>
+                            <a href="./jwt-decoder.html">JWT Decoder</a>
+                            <a href="./regex-tester.html">Regex Tester</a>
+                            <a href="./zip-opener.html">ZIP Opener</a>
+                            <a href="./pdf-merge-split.html">PDF Merge &amp; Split</a>
+                            <a href="./image-to-pdf.html">Image to PDF</a>
+                        </div>
+                    </div>
+
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="icon-button theme-toggle" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle mobile-menu-button" data-menu-toggle aria-label="Open navigation menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="../index.html">Home</a>
+
+                <a href="./json-yaml-csv-converter.html">JSON / YAML / CSV Converter</a>
+                <a href="./jwt-decoder.html">JWT Decoder</a>
+                <a href="./regex-tester.html">Regex Tester</a>
+                <a href="./zip-opener.html">ZIP Opener</a>
+                <a href="./pdf-merge-split.html">PDF Merge &amp; Split</a>
+                <a href="./image-to-pdf.html">Image to PDF</a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Page Header -->
+    <section class="tool-page-header">
+        <div class="container">
+
+            <div class="eyebrow">File Tool</div>
+
+            <h1>Image to PDF</h1>
+
+            <p>
+                Convert JPG, PNG, and WebP images into a single PDF directly
+                in your browser. Reorder, remove, and preview images before
+                creating your PDF.
+            </p>
+
+        </div>
+    </section>
+
+
+    <main class="container image-pdf-main">
+
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+            <span class="privacy-icon">🔒</span>
+
+            <div>
+                <strong>Your files stay private.</strong>
+                Images are processed directly in your browser and are not
+                uploaded to a server.
+            </div>
+        </div>
+
+
+        <!-- Upload Card -->
+        <section class="tool-card image-upload-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Add Images</h2>
+                    <p>Select multiple JPG, PNG, or WebP images.</p>
+                </div>
+
+                <span class="file-count-badge" id="image-file-count">
+                    0 images
+                </span>
+            </div>
+
+            <input type="file" id="image-input" accept="image/jpeg,image/png,image/webp" multiple hidden>
+
+            <label for="image-input" class="image-drop-zone">
+
+                <div class="drop-icon">↑</div>
+
+                <strong>Drop images here</strong>
+
+                <span>or click to browse from your device</span>
+
+                <small>JPG, JPEG, PNG, WebP</small>
+
+            </label>
+
+            <div class="tool-actions">
+
+                <button type="button" class="secondary-button" id="image-example">
+                    Load Example
+                </button>
+
+                <button type="button" class="secondary-button" id="image-clear">
+                    Clear All
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Image List -->
+        <section class="tool-card image-list-card" id="image-list-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Selected Images</h2>
+                    <p>Arrange the images in the order you want them in the PDF.</p>
+                </div>
+
+            </div>
+
+            <div class="image-list" id="image-list">
+                <div class="empty-state" id="image-empty-state">
+                    <div class="empty-icon">🖼</div>
+                    <strong>No images selected</strong>
+                    <span>Add some images above to get started.</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Generate Card -->
+        <section class="tool-card image-generate-card">
+
+            <div class="generate-content">
+
+                <div>
+                    <h2>Ready to create your PDF?</h2>
+
+                    <p>
+                        Each image will be placed on its own A4-sized PDF page
+                        while keeping its original proportions.
+                    </p>
+                </div>
+
+                <button type="button" class="primary-button image-generate-button" id="image-generate">
+                    Create PDF
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Error -->
+        <div class="tool-error" id="image-error" role="alert"></div>
+
+
+        <!-- Result -->
+        <section class="tool-card image-result-card" id="image-result">
+
+            <div class="result-success-icon">✓</div>
+
+            <h2>PDF Ready</h2>
+
+            <p id="image-result-description">
+                Your PDF has been created successfully.
+            </p>
+
+            <div class="result-stats">
+
+                <div class="result-stat">
+                    <span>Images</span>
+                    <strong id="image-result-count">0</strong>
+                </div>
+
+                <div class="result-stat">
+                    <span>PDF Size</span>
+                    <strong id="image-result-size">0 KB</strong>
+                </div>
+
+            </div>
+
+            <a href="#" class="primary-button" id="image-download" download="images-to-pdf.pdf">
+                Download PDF
+            </a>
+
+        </section>
+
+
+        <!-- About -->
+        <section class="info-section">
+
+            <h2>About this tool</h2>
+
+            <p>
+                Image to PDF lets you combine multiple images into one PDF
+                document without installing any software. Your images are
+                processed locally in your browser, so the files do not need
+                to be uploaded anywhere.
+            </p>
+
+            <div class="info-grid">
+
+                <div class="info-item">
+                    <h3>Multiple Images</h3>
+                    <p>
+                        Add several images at once and combine them into one PDF.
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h3>Easy Reordering</h3>
+                    <p>
+                        Move images up or down to control their page order.
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h3>Browser Based</h3>
+                    <p>
+                        Everything happens locally in your browser with no
+                        server upload.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAQ -->
+        <section class="faq-section">
+
+            <div class="faq-header">
+                <div class="eyebrow">FAQ</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list" id="image-faq">
+
+                <details>
+                    <summary>
+                        Which image formats are supported?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        The tool supports JPG, JPEG, PNG, and WebP images.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Are my images uploaded to a server?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        No. Images are processed directly inside your browser
+                        and are not uploaded to a server.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Can I change the order of the images?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        Yes. Use the up and down buttons beside each image to
+                        change its position before creating the PDF.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Will the image proportions be preserved?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        Yes. Images are fitted onto the PDF page while
+                        preserving their original proportions.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Can I use this tool on my phone?
+                        <span>+</span>
+                    </summary>
+
+                    <p>
+                        Yes. The tool is designed to work on both desktop and
+                        mobile browsers.
+                    </p>
+                </details>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <div>
+                <strong>Dev Tool Kit</strong>
+                <p>Simple browser-based tools for everyday development tasks.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../privacy-policy.html">Privacy</a>
+                <a href="../terms.html">Terms</a>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Local PDF Library -->
+    <script src="../js/pdf-lib.min.js"></script>
+
+    <script src="../js/common.js" defer></script>
+    <script src="../js/image-to-pdf.js" defer></script>
+
+</body>
+
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Learn more about Dev Tool Kit, a free collection of browser-based developer and file utility tools.">
+
+    <meta name="keywords"
+        content="Dev Tool Kit, developer tools, online developer tools, JSON converter, JWT decoder, regex tester, PDF tools, ZIP opener">
+
+    <meta name="author" content="Dev Tool Kit">
+
+    <title>About | Dev Tool Kit</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="./js/common.js" defer></script>
+
+    <style>
+        /* About page spacing only */
+        .about-page .about-hero {
+            padding: 58px 0 45px;
+        }
+
+        .about-page .about-hero h1 {
+            max-width: 800px;
+            margin-bottom: 18px;
+        }
+
+        .about-page .about-hero p {
+            max-width: 780px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-page .about-section {
+            padding: 42px 0;
+        }
+
+        .about-page .about-section:first-of-type {
+            padding-top: 30px;
+        }
+
+        .about-page .about-card {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-page .about-card h2 {
+            margin-bottom: 16px;
+        }
+
+        .about-page .about-card p {
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .about-page .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-page .about-heading {
+            max-width: 780px;
+            margin: 0 auto 28px;
+            text-align: center;
+        }
+
+        .about-page .about-heading h2 {
+            margin-bottom: 12px;
+        }
+
+        .about-page .about-heading p {
+            line-height: 1.7;
+        }
+
+        .about-page .about-tool-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .about-page .about-tool-card {
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+        }
+
+        .about-page .about-tool-card h3 {
+            margin: 14px 0 10px;
+        }
+
+        .about-page .about-tool-card p {
+            margin: 0;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .about-page .about-icon {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: var(--surface-soft);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .about-page .about-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .about-page .about-point {
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+        }
+
+        .about-page .about-point h3 {
+            margin-bottom: 8px;
+        }
+
+        .about-page .about-point p {
+            margin: 0;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .about-page .about-cta {
+            text-align: center;
+            padding: 34px;
+        }
+
+        .about-page .about-cta p {
+            max-width: 650px;
+            margin: 0 auto 22px;
+            line-height: 1.7;
+        }
+
+        .about-page .ad-slot {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .about-page .about-tool-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-page .about-points {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-page .about-hero {
+                padding: 42px 0 30px;
+            }
+
+            .about-page .about-section {
+                padding: 30px 0;
+            }
+
+            .about-page .about-tool-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-page .about-cta {
+                padding: 24px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body class="about-page">
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+
+                <a href="./index.html" class="brand" aria-label="Dev Tool Kit Home">
+                    <span class="brand-mark" aria-hidden="true">DT</span>
+                    <span>Dev Tool Kit</span>
+                </a>
+
+                <nav class="main-nav" aria-label="Main navigation">
+
+                    <a href="./index.html">Home</a>
+
+                    <div class="nav-dropdown">
+
+                        <button type="button" class="nav-button nav-dropdown-toggle" aria-haspopup="true">
+                            Tools ▾
+                        </button>
+
+                        <div class="nav-dropdown-menu">
+
+                            <a href="./tools/json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+
+                            <a href="./tools/jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+
+                            <a href="./tools/regex-tester.html">
+                                Regex Tester
+                            </a>
+
+                            <a href="./tools/zip-opener.html">
+                                ZIP Opener
+                            </a>
+
+                            <a href="./tools/pdf-merge-split.html">
+                                PDF Merge &amp; Split
+                            </a>
+
+                            <a href="./tools/image-to-pdf.html">
+                                Image to PDF
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <a href="./about.html" aria-current="page">
+                        About
+                    </a>
+
+                    <a href="./contact.html">
+                        Contact
+                    </a>
+
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="icon-button theme-toggle" data-theme-toggle aria-label="Switch to dark mode"
+                        title="Dark mode">
+                        <span data-theme-icon aria-hidden="true">☾</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle mobile-menu-button" data-menu-toggle aria-label="Open navigation menu"
+                        aria-expanded="false" aria-controls="mobile-navigation">
+                        <span data-menu-icon aria-hidden="true">☰</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Mobile navigation">
+
+                <a href="./index.html">Home</a>
+
+                <a href="./tools/json-yaml-csv-converter.html">
+                    JSON / YAML / CSV Converter
+                </a>
+
+                <a href="./tools/jwt-decoder.html">
+                    JWT Decoder
+                </a>
+
+                <a href="./tools/regex-tester.html">
+                    Regex Tester
+                </a>
+
+                <a href="./tools/zip-opener.html">
+                    ZIP Opener
+                </a>
+
+                <a href="./tools/pdf-merge-split.html">
+                    PDF Merge &amp; Split
+                </a>
+
+                <a href="./tools/image-to-pdf.html">
+                    Image to PDF
+                </a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <a href="./about.html" aria-current="page">
+                    About
+                </a>
+
+                <a href="./contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main class="main-content">
+
+        <!-- About Hero -->
+
+        <section class="about-hero">
+            <div class="container">
+
+                <h1>
+                    Simple tools for everyday digital tasks.
+                </h1>
+
+                <p>
+                    Dev Tool Kit is a free collection of browser-based developer
+                    and file utility tools built to make common digital tasks
+                    faster, easier and more convenient.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Advertisement -->
+
+        <div class="container">
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                Advertisement
+            </div>
+        </div>
+
+
+        <!-- What is Dev Tool Kit -->
+
+        <section class="about-section">
+            <div class="container">
+
+                <div class="info-card about-card">
+
+                    <h2>
+                        What is Dev Tool Kit?
+                    </h2>
+
+                    <p>
+                        Dev Tool Kit brings a collection of useful developer and
+                        file utilities together in one place. Instead of installing
+                        different applications or searching for separate tools,
+                        you can use practical browser-based utilities whenever
+                        you need them.
+                    </p>
+
+                    <p>
+                        The website is designed for developers, students,
+                        freelancers and anyone who works with data, files, text
+                        or everyday development tasks.
+                    </p>
+
+                    <p>
+                        Our goal is simple: provide useful tools with a clean
+                        interface, straightforward controls and no unnecessary
+                        complexity.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Tools -->
+
+        <section class="about-section">
+            <div class="container">
+
+                <div class="about-heading">
+
+                    <h2>
+                        Tools available on Dev Tool Kit
+                    </h2>
+
+                    <p>
+                        A growing collection of utilities for development,
+                        data conversion and everyday file tasks.
+                    </p>
+
+                </div>
+
+
+                <div class="about-tool-grid">
+
+                    <article class="about-tool-card">
+
+                        <div class="about-icon">
+                            JSON
+                        </div>
+
+                        <h3>
+                            JSON / YAML / CSV Converter
+                        </h3>
+
+                        <p>
+                            Convert structured data between JSON, YAML and CSV.
+                            Format, validate, copy and download your results
+                            directly in the browser.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-tool-card">
+
+                        <div class="about-icon">
+                            JWT
+                        </div>
+
+                        <h3>
+                            JWT Decoder
+                        </h3>
+
+                        <p>
+                            Decode JSON Web Tokens and inspect their header,
+                            payload and available token information.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-tool-card">
+
+                        <div class="about-icon">
+                            .*
+                        </div>
+
+                        <h3>
+                            Regex Tester
+                        </h3>
+
+                        <p>
+                            Test regular expressions against sample text and
+                            quickly check whether your patterns match.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-tool-card">
+
+                        <div class="about-icon">
+                            ZIP
+                        </div>
+
+                        <h3>
+                            ZIP Opener
+                        </h3>
+
+                        <p>
+                            Open ZIP archives in your browser and inspect the
+                            files contained inside them.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-tool-card">
+
+                        <div class="about-icon">
+                            PDF
+                        </div>
+
+                        <h3>
+                            PDF Merge &amp; Split
+                        </h3>
+
+                        <p>
+                            Combine PDF documents or split selected pages into
+                            separate PDF files using browser-based processing.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-tool-card">
+
+                        <div class="about-icon">
+                            IMG
+                        </div>
+
+                        <h3>
+                            Image to PDF
+                        </h3>
+
+                        <p>
+                            Convert supported images into PDF documents without
+                            needing separate desktop software.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Advertisement -->
+
+        <div class="container">
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                Advertisement
+            </div>
+        </div>
+
+
+        <!-- How it works -->
+
+        <section class="about-section">
+            <div class="container">
+
+                <div class="about-heading">
+
+                    <h2>
+                        Designed to keep things simple
+                    </h2>
+
+                    <p>
+                        Dev Tool Kit focuses on quick access, simple controls
+                        and browser-based processing.
+                    </p>
+
+                </div>
+
+
+                <div class="about-points">
+
+                    <article class="about-point">
+
+                        <h3>
+                            No account required
+                        </h3>
+
+                        <p>
+                            You can use the tools without creating an account
+                            or going through an unnecessary sign-up process.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-point">
+
+                        <h3>
+                            Browser-based processing
+                        </h3>
+
+                        <p>
+                            Tools are designed to process supported tasks directly
+                            in your browser whenever possible.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-point">
+
+                        <h3>
+                            Fast and accessible
+                        </h3>
+
+                        <p>
+                            The interface is designed to help you complete common
+                            tasks quickly without complicated software.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-point">
+
+                        <h3>
+                            Useful for everyday work
+                        </h3>
+
+                        <p>
+                            Whether you are studying, coding, freelancing or
+                            working with files, the toolkit provides practical
+                            utilities in one place.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Privacy -->
+
+        <section class="about-section">
+            <div class="container">
+
+                <div class="info-card about-card">
+
+                    <h2>
+                        Your data and privacy
+                    </h2>
+
+                    <p>
+                        Many Dev Tool Kit utilities are designed to process data
+                        directly inside your browser. This means that supported
+                        tasks can be completed locally on your device without
+                        requiring an account or uploading your input to a server.
+                    </p>
+
+                    <p>
+                        However, you should always avoid entering passwords,
+                        private keys, confidential documents or other sensitive
+                        information into online tools unless you understand how
+                        that particular tool handles your data.
+                    </p>
+
+                    <p>
+                        For more information about how the website handles
+                        information, please see our
+                        <a href="./privacy-policy.html">
+                            Privacy Policy
+                        </a>.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Advertisement -->
+
+        <div class="container">
+            <div class="ad-slot" aria-label="Advertisement placeholder">
+                Advertisement
+            </div>
+        </div>
+
+
+        <!-- Call to Action -->
+
+        <section class="about-section">
+            <div class="container">
+
+                <div class="info-card about-cta">
+
+                    <h2>
+                        Ready to use the tools?
+                    </h2>
+
+                    <p>
+                        Explore the Dev Tool Kit and find a tool that can help
+                        with your next development or file-related task.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="./index.html#tools" class="button button-primary">
+                            Explore Tools
+                        </a>
+
+                        <a href="./contact.html" class="button button-secondary">
+                            Contact Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <a href="./index.html" class="brand" aria-label="Dev Tool Kit Home">
+                        <span class="brand-mark">DT</span>
+                        <span>Dev Tool Kit</span>
+                    </a>
+
+                    <p>
+                        Free, fast and practical browser-based tools for
+                        developers and everyday file tasks.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Tools
+                    </h3>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="./tools/json-yaml-csv-converter.html">
+                                JSON / YAML / CSV Converter
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./tools/jwt-decoder.html">
+                                JWT Decoder
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./tools/regex-tester.html">
+                                Regex Tester
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./tools/zip-opener.html">
+                                ZIP Opener
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./tools/pdf-merge-split.html">
+                                PDF Merge &amp; Split
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./tools/image-to-pdf.html">
+                                Image to PDF
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Pages
+                    </h3>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="./index.html">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./about.html">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./contact.html">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./privacy-policy.html">
+                                Privacy Policy
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./terms.html">
+                                Terms
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span data-current-year></span> Dev Tool Kit.
+                    All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
